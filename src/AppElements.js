@@ -5,7 +5,8 @@ import {FaHandScissors} from 'react-icons/fa';
 import {BsThreeDots} from 'react-icons/bs';
 
 export const Background = styled.div`
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   height: 100vh;
   background: radial-gradient(farthest-side at 50% 0%, rgb(	0, 96, 191 ), rgb(0, 57, 114 ));
   display: flex;
@@ -18,6 +19,7 @@ export const Background = styled.div`
 
 export const TitleSection = styled.div`
   width: 100vw;
+  max-width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,6 +63,7 @@ export const WinCounter = styled.h2`
 
 export const ResultsSection = styled.div`
   width: 100vw;
+  max-width: 100vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -98,6 +101,7 @@ export const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(0, 44, 89);
 `
 
 export const ResultsActionContainer = styled.div`
@@ -114,10 +118,68 @@ export const CountDown = styled.h1`
   transition: 0.3s ease-in-out;
 `
 
+export const ThrowResultsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`
+
+export const ResultTitle = styled.h2`
+  font-size: 1.8rem;
+  color: whitesmoke;
+  margin-bottom: 2rem;
+`
+
+export const Button = styled.button`
+  border: 1px solid whitesmoke;
+  border-radius: 20px;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+  color: rgb(0, 44, 89);
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    padding: 1rem;
+    margin-top: .4rem;
+  }
+`
+
 // Choice Styles
 
 export const ChoiceSection = styled.div`
+  width: 100%;
+  max-width: 100vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+`
+export const ChoiceTitle = styled.h1`
+  font-size: 2rem;
+  color: whitesmoke;
+`
+export const ChoicesContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2rem;
+`
+export const Choice = styled.div`
+  flex: 0.2;
+  padding: 2rem;
+  margin: 1rem 3rem;
+  border: 1px solid whitesmoke;
+  border-radius: 20px;
+  background-color: rgb(0, 44, 89);
+  transition: 0.3s ease-in-out;
 
+  &:hover {
+    padding: 3rem;
+    margin: 0 2rem;
+  }
 `
 
 // Icon Styles
