@@ -9,31 +9,28 @@ function App() {
   const [ hideChoices, setHideChoices ] = useState(false);
   const [ hideCountDown, setHideCountDown ] = useState(false);
   const [ message, setMessage ] = useState("Placeholder");
+  let opp = 0;
 
   const makeThrow = async (throwId) => {
-    console.log(throwId);
-    if (throwId === 1) { console.log("1"); setUserThrowImage(1); };
-    if (throwId === 2) { console.log("2"); setUserThrowImage(2); };
-    if (throwId === 3) { console.log("3"); setUserThrowImage(3); };
-    console.log(userThrowImage);
+    setUserThrowImage(throwId);
     setHideChoices(true);
     await startCounter();
-    getOppResult();
-    console.log(userThrowImage);
-    console.log(oppThrowImage);
-    // if( (userThrowImage === 1 && oppThrowImage === 1) || (userThrowImage === 2 && oppThrowImage === 2) || (userThrowImage === 3 && oppThrowImage === 3) ) {
-    //   setMessage("It's A Draw!");
-    // } else if ( (userThrowImage === 1 && oppThrowImage === 3) || (userThrowImage === 3 && oppThrowImage === 2) || (userThrowImage === 2 && oppThrowImage === 1) ) {
-    //   setMessage("That's a Loss!");
-    // } else {
-    //   setMessage("Congrats on the Win!");
-    //   setWinCount(winCount + 1);
-    // }
+    let opp = getOppResult();
+    if ( (throwId === 1 && opp === 1) || (throwId === 2 && opp === 2) || (throwId === 3 && opp === 3) ) {
+      setMessage("It's A Draw!");
+    } else if ( (throwId === 1 && opp === 3) || (throwId === 3 && opp === 2) || (throwId === 2 && opp === 1) ) {
+      setMessage("Congrats on the Win!");
+      setWinCount(winCount + 1);
+    } else {
+      setMessage("That's a Loss!");
+    }
     setHideCountDown(true);
   }
 
   const getOppResult = () => {
-    setOppThrowImage(Math.ceil(Math.random()*3));
+    opp = Math.ceil(Math.random()*3);
+    setOppThrowImage(opp);
+    return opp;
   }
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -98,7 +95,7 @@ function App() {
         </OppResultsContainer>
       </ResultsSection>
       <ChoiceSection>
-        <ChoiceTitle>{hideChoices ? "Good Luck!" : "Make Your Choice"}</ChoiceTitle>
+        <ChoiceTitle>{hideChoices ? "" : "Make Your Choice"}</ChoiceTitle>
         { hideChoices ? "" : 
           <ChoicesContainer>
             <Choice onClick={() => {makeThrow(1)}}>
